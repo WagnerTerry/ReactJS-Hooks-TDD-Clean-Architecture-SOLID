@@ -10,3 +10,4 @@
 - npm i -D lint-staged husky
 - npm i -D jest @types/jest ts-jest
 - npm i -D jest@25
+- npm i -D faker @types/faker
