@@ -15,3 +15,5 @@
 - npm i -D faker @types/faker
 - npm i axios
 - npm i @types/axios -D
+- npm i react react-dom
+- npm i @types/react @types/react-dom -D
