@@ -15,5 +15,11 @@
 - npm i -D faker @types/faker
 - npm i axios
 - npm i @types/axios -D
+
 - npm i react react-dom
 - npm i @types/react @types/react-dom -D
+- npm i -D webpack webpack-cli webpack-dev-server
+- npm i -D clean-webpack-plugin
+- npm i -D eslint-plugin-react
+- npm i -D node-sass sass-loader css-loader style-loader ts-loader
+- npm i -D identity-obj-proxy
