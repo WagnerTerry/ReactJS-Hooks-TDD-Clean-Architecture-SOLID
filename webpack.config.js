@@ -33,11 +33,20 @@ module.exports = {
                 loader: 'sass-loader'
             }]
         }]
-    }
+    },
     devServer: {
-        contentBase: './public',
-        writeToDisk: true,
-        historyApiFallback: true
+        static: {
+            directory: path.join(__dirname, './public')
+          },
+          compress: true,
+          historyApiFallback: true,
+          https: false,
+          open: true,
+          hot: true,
+       
+          devMiddleware: {
+            writeToDisk: true
+          },
     },
     externals: {
         react: 'React',
