@@ -1,7 +1,8 @@
 # react
 
-## Rodar os testes
-- npm run dev:watch
+## Comandos
+- npm start // Rodar o projeto
+- npm run dev:watch // Rodar testes
 ## Dependecias
 
 - npm init -y
