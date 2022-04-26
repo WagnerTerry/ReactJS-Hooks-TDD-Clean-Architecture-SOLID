@@ -3,7 +3,7 @@
 .inputWrap {
     margin-top: 40px;
     position: relative;
-    border-bottom: 2px dashed $disabledColor;
+    //border-bottom: 2px dashed $disabledColor;
 
     &[data-status="valid"] {
         border-bottom-color: $valid;
