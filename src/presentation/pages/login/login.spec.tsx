@@ -8,6 +8,8 @@ import {  AuthenticationParams, Authentication } from '@/domain/usecases'
 import { mockAccountModel } from '@/domain/test'
 import { AccountModel } from '@/domain/models'
 import { InvalidCredentialsError } from '@/domain/errors'
+import { Router } from 'react-router-dom'
+import {createMemoryHistory} from 'history'
 
 class AuthenticationSpy implements Authentication {
     account = mockAccountModel()
@@ -30,11 +32,16 @@ type SutParams = {
     validationError: string
 }
 
+const history = createMemoryHistory({ initialEntries: ['/login']})
 const makeSut = (params?: SutParams): SutTypes => {
     const validationStub = new ValidationStub()
     const authenticationSpy = new AuthenticationSpy()
     validationStub.errorMessage = params?.validationError
-    const sut = render(<Login validation={validationStub} authentication={authenticationSpy}/>)
+    const sut = render(
+        <Router history={history}>
+    <Login validation={validationStub} authentication={authenticationSpy}/>
+    </Router>
+    )
     return {
         sut,
         authenticationSpy
@@ -200,5 +207,15 @@ describe('Login Component', () => {
         simulateValidSubmit(sut)
         await waitFor(() => sut.getByTestId('form'))
         expect(localStorage.setItem).toHaveBeenCalledWith('accessToken', authenticationSpy.account.accessToken)
+        expect(history.length).toBe(1)
+        expect(history.location.pathname).toBe('/')
+    })
+
+    test('Should go to signup page', () => {
+        const {sut} = makeSut()
+        const register = sut.getByTestId('signup')
+        fireEvent.click(register)
+        expect(history.length).toBe(2)
+        expect(history.location.pathname).toBe('/signup')
     })
 })
