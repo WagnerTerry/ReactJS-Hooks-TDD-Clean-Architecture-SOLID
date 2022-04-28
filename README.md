@@ -27,3 +27,4 @@
 - npm i react-router-dom
 - npm i @types/react-router-dom -D
 - npm i -D @testing-library/react
+- npm i -D jest-localstorage-mock
